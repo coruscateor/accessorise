@@ -1,6 +1,8 @@
 #![doc = include_str!("../README.md")]
 
-mod macros;
+mod trait_marcos;
+
+mod impl_macros;
 
 #[cfg(test)]
 mod tests
