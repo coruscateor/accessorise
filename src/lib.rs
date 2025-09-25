@@ -15,17 +15,17 @@ mod tests
     trait TestTrait
     {
 
-        trait_get!(a_number, i32);
+        trait_get_val!(a_number, i32);
 
-        trait_set!(a_number, i32);
+        trait_set_val!(a_number, i32);
 
         trait_get_ref!(a_string, String);
 
         trait_get_mut!(a_string, String);
 
-        trait_get!(a_number_doc, i8, "This is a getter declaration, presumably for a number field.");
+        trait_get_val!(a_number_doc, i8, "This is a getter declaration, presumably for a number field.");
 
-        trait_set!(a_number_doc, i8, "This is a setter declaration, presumably for a number field.");
+        trait_set_val!(a_number_doc, i8, "This is a setter declaration, presumably for a number field.");
 
         trait_get_ref!(a_string_doc, String, "This is a getter declaration, presumably for a String field.");
 
@@ -55,9 +55,9 @@ mod tests
 
         }
 
-        impl_get!(a_number, i32);
+        impl_get_copy!(a_number, i32);
 
-        impl_set!(a_number, i32);
+        impl_set_move!(a_number, i32);
 
         impl_get_clone!(a_string, String);
 
@@ -76,17 +76,17 @@ mod tests
     impl TestTrait for TestStruct
     {
 
-        impl_trait_get!(a_number, i32);
+        impl_trait_get_copy!(a_number, i32);
 
-        impl_trait_set!(a_number, i32);
+        impl_trait_set_move!(a_number, i32);
 
         impl_trait_get_ref!(a_string, String);
 
         impl_trait_get_mut!(a_string, String);
 
-        impl_trait_get!(a_number_doc, i8, "This is a getter implementation for a number field.");
+        impl_trait_get_copy!(a_number_doc, i8, "This is a getter implementation for a number field.");
 
-        impl_trait_set!(a_number_doc, i8, "This is a setter implementation for a number field.");
+        impl_trait_set_move!(a_number_doc, i8, "This is a setter implementation for a number field.");
 
         impl_trait_get_ref!(a_string_doc, String, "This is a getter implementation for a String field.");
 

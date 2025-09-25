@@ -2,28 +2,28 @@
 //Impl Blocks
 
 #[macro_export]
-macro_rules! impl_get
+macro_rules! impl_get_copy
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
-        pub fn $name(&self) -> $name_type
+        pub fn $field_name(&self) -> $field_name_type
         {
 
-            self.$name
+            self.$field_name
 
         }
 
     };
-    ($name:ident, $name_type:ty, $documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
     {
 
         #[doc = $documentation]
-        pub fn $name(&self) -> $name_type
+        pub fn $field_name(&self) -> $field_name_type
         {
 
-            self.$name
+            self.$field_name
 
         }
 
@@ -34,28 +34,28 @@ macro_rules! impl_get
 //Impl Trait
 
 #[macro_export]
-macro_rules! impl_trait_get
+macro_rules! impl_trait_get_copy
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
-        fn $name(&self) -> $name_type
+        fn $field_name(&self) -> $field_name_type
         {
 
-            self.$name
+            self.$field_name
 
         }
 
     };
-    ($name:ident, $name_type:ty, $documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
     {
 
         #[doc = $documentation]
-        fn $name(&self) -> $name_type
+        fn $field_name(&self) -> $field_name_type
         {
 
-            self.$name
+            self.$field_name
 
         }
 
@@ -66,36 +66,36 @@ macro_rules! impl_trait_get
 //Set
 
 #[macro_export]
-macro_rules! impl_set
+macro_rules! impl_set_move
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
         paste!
         {
 
-            pub fn [<set_ $name>](&mut self, value: $name_type)
+            pub fn [<set_ $field_name>](&mut self, value: $field_name_type)
             {
 
-                self.$name = value;
+                self.$field_name = value;
 
             }
 
         }
 
     };
-    ($name:ident, $name_type:ty, $documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
     {
 
         paste!
         {
 
             #[doc = $documentation]
-            pub fn [<set_ $name>](&mut self, value: $name_type)
+            pub fn [<set_ $field_name>](&mut self, value: $field_name_type)
             {
 
-                self.$name = value;
+                self.$field_name = value;
 
             }
 
@@ -108,36 +108,36 @@ macro_rules! impl_set
 //Impl Trait
 
 #[macro_export]
-macro_rules! impl_trait_set
+macro_rules! impl_trait_set_move
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
         paste!
         {
 
-            fn [<set_ $name>](&mut self, value: $name_type)
+            fn [<set_ $field_name>](&mut self, value: $field_name_type)
             {
 
-                self.$name = value;
+                self.$field_name = value;
 
             }
 
         }
 
     };
-    ($name:ident, $name_type:ty, $documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
     {
 
         paste!
         {
 
             #[doc = $documentation]
-            fn [<set_ $name>](&mut self, value: $name_type)
+            fn [<set_ $field_name>](&mut self, value: $field_name_type)
             {
 
-                self.$name = value;
+                self.$field_name = value;
 
             }
 
@@ -148,23 +148,23 @@ macro_rules! impl_trait_set
 }
 
 #[macro_export]
-macro_rules! impl_get_set
+macro_rules! impl_get_copy_set_move
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
-        impl_get!($name, $name_type);
+        impl_get_copy!($field_name, $field_name_type);
 
-        impl_set!($name, $name_type);
+        impl_set_move!($field_name, $field_name_type);
 
     };
-    ($name:ident, $name_type:ty, $getter_documentation:literal, $setter_documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $getter_documentation:literal, $setter_documentation:literal) =>
     {
 
-        impl_get!($name, $name_type, $getter_documentation);
+        impl_gett_copy!($field_name, $field_name_type, $getter_documentation);
 
-        impl_set!($name, $name_type, $setter_documentation:);
+        impl_set_move!($field_name, $field_name_type, $setter_documentation:);
 
     }
 
@@ -178,33 +178,33 @@ macro_rules! impl_get_set
 macro_rules! impl_get_ref
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
         paste!
         {
 
-            pub fn [<$name _ref>](&self) -> &$name_type
+            pub fn [<$field_name _ref>](&self) -> &$field_name_type
             {
 
-                &self.$name
+                &self.$field_name
 
             }
 
         }
 
     };
-    ($name:ident, $name_type:ty, $documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
     {
 
         paste!
         {
 
             #[doc = $documentation]
-            pub fn [<$name _ref>](&self) -> &$name_type
+            pub fn [<$field_name _ref>](&self) -> &$field_name_type
             {
 
-                &self.$name
+                &self.$field_name
 
             }
 
@@ -220,33 +220,33 @@ macro_rules! impl_get_ref
 macro_rules! impl_trait_get_ref
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
         paste!
         {
 
-            fn [<$name _ref>](&self) -> &$name_type
+            fn [<$field_name _ref>](&self) -> &$field_name_type
             {
 
-                &self.$name
+                &self.$field_name
 
             }
 
         }
 
     };
-    ($name:ident, $name_type:ty, $documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
     {
 
         paste!
         {
 
             #[doc = $documentation]
-            fn [<$name _ref>](&self) -> &$name_type
+            fn [<$field_name _ref>](&self) -> &$field_name_type
             {
 
-                &self.$name
+                &self.$field_name
 
             }
 
@@ -262,33 +262,33 @@ macro_rules! impl_trait_get_ref
 macro_rules! impl_get_mut
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
         paste!
         {
 
-            pub fn [<$name _mut>](&mut self) -> &mut $name_type
+            pub fn [<$field_name _mut>](&mut self) -> &mut $field_name_type
             {
 
-                &mut self.$name
+                &mut self.$field_name
 
             }
 
         }
 
     };
-    ($name:ident, $name_type:ty, $documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
     {
 
         paste!
         {
 
             #[doc = $documentation]
-            pub fn [<$name _mut>](&mut self) -> &mut $name_type
+            pub fn [<$field_name _mut>](&mut self) -> &mut $field_name_type
             {
 
-                &mut self.$name
+                &mut self.$field_name
 
             }
 
@@ -306,33 +306,33 @@ macro_rules! impl_get_mut
 macro_rules! impl_trait_get_mut
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
         paste!
         {
 
-            fn [<$name _mut>](&mut self) -> &mut $name_type
+            fn [<$field_name _mut>](&mut self) -> &mut $field_name_type
             {
 
-                &mut self.$name
+                &mut self.$field_name
 
             }
 
         }
 
     };
-    ($name:ident, $name_type:ty, $documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
     {
 
         paste!
         {
 
             #[doc = $documentation]
-            fn [<$name _mut>](&mut self) -> &mut $name_type
+            fn [<$field_name _mut>](&mut self) -> &mut $field_name_type
             {
 
-                &mut self.$name
+                &mut self.$field_name
 
             }
 
@@ -348,33 +348,33 @@ macro_rules! impl_trait_get_mut
 macro_rules! impl_get_clone
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
         paste!
         {
 
-            pub fn $name(&self) -> $name_type
+            pub fn $field_name(&self) -> $field_name_type
             {
 
-                self.$name.clone()
+                self.$field_name.clone()
 
             }
 
         }
 
     };
-    ($name:ident, $name_type:ty, $documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
     {
 
         paste!
         {
 
             #[doc = $documentation]
-            pub fn $name(&self) -> $name_type
+            pub fn $field_name(&self) -> $field_name_type
             {
 
-                self.$name.clone()
+                self.$field_name.clone()
 
             }
             
@@ -390,33 +390,33 @@ macro_rules! impl_get_clone
 macro_rules! impl_trait_get_clone
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
         paste!
         {
 
-            fn $name(&self) -> $name_type
+            fn $field_name(&self) -> $field_name_type
             {
 
-                self.$name.clone()
+                self.$field_name.clone()
 
             }
 
         }
 
     };
-    ($name:ident, $name_type:ty, $documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
     {
 
         paste!
         {
 
             #[doc = $documentation]
-            fn $name(&self) -> $name_type
+            fn $field_name(&self) -> $field_name_type
             {
 
-                self.$name.clone()
+                self.$field_name.clone()
 
             }
             
@@ -432,33 +432,33 @@ macro_rules! impl_trait_get_clone
 macro_rules! impl_set_clone
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
         paste!
         {
 
-            pub fn [<set_ $name>](&mut self, value: &$name_type)
+            pub fn [<set_ $field_name>](&mut self, value: &$field_name_type)
             {
 
-                self.$name = value.clone();
+                self.$field_name = value.clone();
 
             }
 
         }
 
     };
-    ($name:ident, $name_type:ty, $documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
     {
 
         paste!
         {
 
             #[doc = $documentation]
-            pub fn [<set_ $name>](&mut self, value: &$name_type)
+            pub fn [<set_ $field_name>](&mut self, value: &$field_name_type)
             {
 
-                self.$name = value.clone();
+                self.$field_name = value.clone();
 
             }
 
@@ -474,33 +474,33 @@ macro_rules! impl_set_clone
 macro_rules! impl_trait_set_clone
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
         paste!
         {
 
-            fn [<set_ $name>](&mut self, value: &$name_type)
+            fn [<set_ $field_name>](&mut self, value: &$field_name_type)
             {
 
-                self.$name = value.clone();
+                self.$field_name = value.clone();
 
             }
 
         }
 
     };
-    ($name:ident, $name_type:ty, $documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
     {
 
         paste!
         {
 
             #[doc = $documentation]
-            fn [<set_ $name>](&mut self, value: &$name_type)
+            fn [<set_ $field_name>](&mut self, value: &$field_name_type)
             {
 
-                self.$name = value.clone();
+                self.$field_name = value.clone();
 
             }
 
@@ -515,10 +515,10 @@ macro_rules! impl_trait_set_clone
 macro_rules! impl_aliased_get_ref
 {
 
-    ($field:ident, $alias:ident, $name_type:ty) =>
+    ($field:ident, $alias:ident, $field_name_type:ty) =>
     {
 
-        pub fn $alias(&self) -> &$name_type
+        pub fn $alias(&self) -> &$field_name_type
         {
 
             &self.$field
@@ -533,13 +533,13 @@ macro_rules! impl_aliased_get_ref
 macro_rules! impl_aliased_get_mut
 {
 
-    ($field:ident, $alias:ident, $name_type:ty) =>
+    ($field:ident, $alias:ident, $field_name_type:ty) =>
     {
 
         paste!
         {
 
-            pub fn $alias(&mut self) -> &mut $name_type
+            pub fn $alias(&mut self) -> &mut $field_name_type
             {
 
                 &mut self.$field

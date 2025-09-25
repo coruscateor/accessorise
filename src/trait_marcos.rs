@@ -2,48 +2,48 @@
 //Traits
 
 #[macro_export]
-macro_rules! trait_get
+macro_rules! trait_get_val
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
-        fn $name(&self) -> $name_type;
+        fn $field_name(&self) -> $field_name_type;
 
     };
-    ($name:ident, $name_type:ty, $documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
     {
 
         #[doc = $documentation]
-        fn $name(&self) -> $name_type;
+        fn $field_name(&self) -> $field_name_type;
 
     }
 
 }
 
 #[macro_export]
-macro_rules! trait_set
+macro_rules! trait_set_val
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
         paste!
         {
 
-            fn [<set_ $name>](&mut self, value: $name_type);
+            fn [<set_ $field_name>](&mut self, value: $field_name_type);
 
         }
 
     };
-    ($name:ident, $name_type:ty, $documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
     {
 
         paste!
         {
 
             #[doc = $documentation]
-            fn [<set_ $name>](&mut self, value: $name_type);
+            fn [<set_ $field_name>](&mut self, value: $field_name_type);
 
         }
 
@@ -52,23 +52,23 @@ macro_rules! trait_set
 }
 
 #[macro_export]
-macro_rules! trait_get_set
+macro_rules! trait_get_set_val
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
-        trait_get!($name, $name_type);
+        trait_get_val!($field_name, $field_name_type);
 
-        trait_set!($name, $name_type);
+        trait_set_val!($field_name, $field_name_type);
 
     };
-    ($name:ident, $name_type:ty, $getter_documentation:literal, $setter_documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $getter_documentation:literal, $setter_documentation:literal) =>
     {
 
-        trait_get!($name, $name_type, $getter_documentation);
+        trait_get_val!($field_name, $field_name_type, $getter_documentation);
 
-        trait_set!($name, $name_type, $setter_documentation);
+        trait_set_val!($field_name, $field_name_type, $setter_documentation);
 
     }
 
@@ -78,25 +78,25 @@ macro_rules! trait_get_set
 macro_rules! trait_get_ref
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
         paste!
         {
 
-            fn [<$name _ref>](&self) -> &$name_type;
+            fn [<$field_name _ref>](&self) -> &$field_name_type;
 
         }
 
     };
-    ($name:ident, $name_type:ty, $documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
     {
 
         paste!
         {
 
             #[doc = $documentation]
-            fn [<$name _ref>](&self) -> &$name_type;
+            fn [<$field_name _ref>](&self) -> &$field_name_type;
             
         }
 
@@ -108,25 +108,25 @@ macro_rules! trait_get_ref
 macro_rules! trait_get_mut
 {
 
-    ($name:ident, $name_type:ty) =>
+    ($field_name:ident, $field_name_type:ty) =>
     {
 
         paste!
         {
 
-            fn [<$name _mut>](&mut self) -> &mut $name_type;
+            fn [<$field_name _mut>](&mut self) -> &mut $field_name_type;
 
         }
 
     };
-    ($name:ident, $name_type:ty, $documentation:literal) =>
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
     {
 
         paste!
         {
 
             #[doc = $documentation]
-            fn [<$name _mut>](&mut self) -> &mut $name_type;
+            fn [<$field_name _mut>](&mut self) -> &mut $field_name_type;
 
         }
 
