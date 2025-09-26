@@ -55,38 +55,38 @@ mod tests
 
         }
 
-        impl_get_copy!(a_number, i32);
+        impl_get_val!(a_number, i32);
 
-        impl_set_move!(a_number, i32);
+        impl_set_val!(a_number, i32);
 
-        impl_get_clone!(a_string, String);
+        impl_get_val!(a_string, String);
 
-        impl_get_clone!(a_string_doc, String, "Returns a cloned String.");
+        impl_get_val!(a_string_doc, String, "Returns a cloned String.");
 
         impl_get_ref!(some_numbers, Vec<i32>, "Returns some numbers by reference.");
 
         impl_get_mut!(some_numbers, Vec<i32>, "Returns some numbers by mutable reference.");
 
-        impl_get_clone!(some_numbers, Vec<i32>);
+        impl_get_val!(some_numbers, Vec<i32>);
 
-        impl_set_clone!(some_numbers, Vec<i32>);
+        impl_set_val!(some_numbers, Vec<i32>);
 
     }
 
     impl TestTrait for TestStruct
     {
 
-        impl_trait_get_copy!(a_number, i32);
+        impl_trait_get_val!(a_number, i32);
 
-        impl_trait_set_move!(a_number, i32);
+        impl_trait_set_val!(a_number, i32);
 
         impl_trait_get_ref!(a_string, String);
 
         impl_trait_get_mut!(a_string, String);
 
-        impl_trait_get_copy!(a_number_doc, i8, "This is a getter implementation for a number field.");
+        impl_trait_get_val!(a_number_doc, i8, "This is a getter implementation for a number field.");
 
-        impl_trait_set_move!(a_number_doc, i8, "This is a setter implementation for a number field.");
+        impl_trait_set_val!(a_number_doc, i8, "This is a setter implementation for a number field.");
 
         impl_trait_get_ref!(a_string_doc, String, "This is a getter implementation for a String field.");
 

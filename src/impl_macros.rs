@@ -1,6 +1,10 @@
 
 //Impl Blocks
 
+//Disabled
+
+/*
+
 #[macro_export]
 macro_rules! impl_get_copy
 {
@@ -63,10 +67,12 @@ macro_rules! impl_trait_get_copy
 
 }
 
+*/
+
 //Set
 
 #[macro_export]
-macro_rules! impl_set_move
+macro_rules! impl_set_val
 {
 
     ($field_name:ident, $field_name_type:ty) =>
@@ -108,7 +114,7 @@ macro_rules! impl_set_move
 //Impl Trait
 
 #[macro_export]
-macro_rules! impl_trait_set_move
+macro_rules! impl_trait_set_val
 {
 
     ($field_name:ident, $field_name_type:ty) =>
@@ -147,6 +153,10 @@ macro_rules! impl_trait_set_move
 
 }
 
+//Disabled
+
+/*
+
 #[macro_export]
 macro_rules! impl_get_copy_set_move
 {
@@ -169,6 +179,8 @@ macro_rules! impl_get_copy_set_move
     }
 
 }
+
+*/
 
 //References
 
@@ -345,7 +357,7 @@ macro_rules! impl_trait_get_mut
 //Cloning
 
 #[macro_export]
-macro_rules! impl_get_clone
+macro_rules! impl_get_val
 {
 
     ($field_name:ident, $field_name_type:ty) =>
@@ -387,7 +399,7 @@ macro_rules! impl_get_clone
 //Impl Trait
 
 #[macro_export]
-macro_rules! impl_trait_get_clone
+macro_rules! impl_trait_get_val
 {
 
     ($field_name:ident, $field_name_type:ty) =>
@@ -429,7 +441,7 @@ macro_rules! impl_trait_get_clone
 //Setter
 
 #[macro_export]
-macro_rules! impl_set_clone
+macro_rules! impl_set_val_clone
 {
 
     ($field_name:ident, $field_name_type:ty) =>
@@ -471,7 +483,7 @@ macro_rules! impl_set_clone
 //Impl Trait
 
 #[macro_export]
-macro_rules! impl_trait_set_clone
+macro_rules! impl_trait_set_val_clone
 {
 
     ($field_name:ident, $field_name_type:ty) =>
@@ -505,6 +517,100 @@ macro_rules! impl_trait_set_clone
             }
 
         }
+
+    }
+
+}
+
+//
+
+#[macro_export]
+macro_rules! impl_get_set_val
+{
+
+    ($field_name:ident, $field_name_type:ty) =>
+    {
+
+        impl_get_val!($field_name, $field_name_type);
+
+        impl_set_val!($field_name, $field_name_type);
+
+    };
+    ($field_name:ident, $field_name_type:ty, $getter_documentation:literal, $setter_documentation:literal) =>
+    {
+
+        impl_get_val!($field_name, $field_name_type, $getter_documentation);
+
+        impl_set_val!($field_name, $field_name_type, $setter_documentation:);
+
+    }
+
+}
+
+#[macro_export]
+macro_rules! impl_trait_get_set_val
+{
+
+    ($field_name:ident, $field_name_type:ty) =>
+    {
+
+        impl_trait_get_val!($field_name, $field_name_type);
+
+        impl_trait_set_val!($field_name, $field_name_type);
+
+    };
+    ($field_name:ident, $field_name_type:ty, $getter_documentation:literal, $setter_documentation:literal) =>
+    {
+
+        impl_trait_get_val!($field_name, $field_name_type, $getter_documentation);
+
+        impl_trait_set_val!($field_name, $field_name_type, $setter_documentation:);
+
+    }
+
+}
+
+#[macro_export]
+macro_rules! impl_get_ref_mut
+{
+
+    ($field_name:ident, $field_name_type:ty) =>
+    {
+
+        impl_get_ref!($field_name, $field_name_type);
+
+        impl_get_mut!($field_name, $field_name_type);
+
+    };
+    ($field_name:ident, $field_name_type:ty, $getter_documentation:literal, $setter_documentation:literal) =>
+    {
+
+        impl_get_ref!($field_name, $field_name_type, $getter_documentation);
+
+        impl_get_mut!($field_name, $field_name_type, $setter_documentation:);
+
+    }
+
+}
+
+#[macro_export]
+macro_rules! impl_trait_get_ref_mut
+{
+
+    ($field_name:ident, $field_name_type:ty) =>
+    {
+
+        impl_trait_get_ref!($field_name, $field_name_type);
+
+        impl_trait_get_mut!($field_name, $field_name_type);
+
+    };
+    ($field_name:ident, $field_name_type:ty, $getter_documentation:literal, $setter_documentation:literal) =>
+    {
+
+        impl_trait_get_ref!($field_name, $field_name_type, $getter_documentation);
+
+        impl_trait_get_mut!($field_name, $field_name_type, $setter_documentation:);
 
     }
 
