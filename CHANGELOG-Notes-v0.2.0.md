@@ -66,3 +66,24 @@ b86532153665ef7a66abbd2a14243452cfba77c9
 
 
 
+a233c328982d142554a90a1aed01b665f839d6d4
+
+- Started preparing the changelog and the changelog notes for the v0.2.0 release.
+
+- Updated the Readme.
+
+- Updated the project description.
+
+
+
+c7f41feb52ac90d8a65dff87c28a35d6ae1847d9
+
+- Removed the impl_get_copy and the impl_trait_get_copy macros.
+
+- Removed the impl_get_copy_set_move macro.
+
+- Removed the trait_get_clone macro.
+
+- Cleaned up the code a bit.
+
+
