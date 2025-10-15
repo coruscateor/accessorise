@@ -15,7 +15,7 @@
 [GitHub](https://github.com/coruscateor) | 
 [GitHub Sponsors](https://github.com/sponsors/coruscateor)
 
-Add accessors to your objects.
+Add accessors to your struct and trait implementations.
 
 </div>
 
