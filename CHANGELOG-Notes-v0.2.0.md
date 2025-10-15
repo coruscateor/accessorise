@@ -58,7 +58,7 @@ b86532153665ef7a66abbd2a14243452cfba77c9 -
 
 - Added the impl_trait_get_ref_mut macro.
 
-- Updated the tests module.
+-- Updated the tests module.
 
 - Added the trait_get_ref_mut macro.
 
