@@ -2,7 +2,7 @@
 //Traits
 
 #[macro_export]
-macro_rules! trait_get_val
+macro_rules! trait_val_getter //trait_get_val
 {
 
     ($field_name:ident, $field_name_type:ty) =>
@@ -22,7 +22,7 @@ macro_rules! trait_get_val
 }
 
 #[macro_export]
-macro_rules! trait_set_val
+macro_rules! trait_val_setter //trait_set_val
 {
 
     ($field_name:ident, $field_name_type:ty) =>
@@ -52,7 +52,7 @@ macro_rules! trait_set_val
 }
 
 #[macro_export]
-macro_rules! trait_get_set_val
+macro_rules! trait_val_getter_setter //trait_get_set_val
 {
 
     ($field_name:ident, $field_name_type:ty) =>
@@ -75,7 +75,7 @@ macro_rules! trait_get_set_val
 }
 
 #[macro_export]
-macro_rules! trait_get_ref
+macro_rules! trait_ref_getter //trait_get_ref
 {
 
     ($field_name:ident, $field_name_type:ty) =>
@@ -105,7 +105,7 @@ macro_rules! trait_get_ref
 }
 
 #[macro_export]
-macro_rules! trait_get_mut
+macro_rules! trait_mut_getter //trait_get_mut
 {
 
     ($field_name:ident, $field_name_type:ty) =>
@@ -135,7 +135,7 @@ macro_rules! trait_get_mut
 }
 
 #[macro_export]
-macro_rules! trait_get_ref_mut
+macro_rules! trait_mut_ref_getters //trait_get_ref_mut
 {
 
     ($field_name:ident, $field_name_type:ty) =>
@@ -158,7 +158,7 @@ macro_rules! trait_get_ref_mut
 }
 
 #[macro_export]
-macro_rules! trait_set_val_clone_sig
+macro_rules! trait_clone_sig_val_setter //trait_set_val_clone_sig
 {
 
     ($field_name:ident, $field_name_type:ty) =>
