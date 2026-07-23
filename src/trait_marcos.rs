@@ -58,17 +58,17 @@ macro_rules! trait_val_getter_setter //trait_get_set_val
     ($field_name:ident, $field_name_type:ty) =>
     {
 
-        trait_get_val!($field_name, $field_name_type);
+        trait_val_getter!($field_name, $field_name_type);
 
-        trait_set_val!($field_name, $field_name_type);
+        trait_val_setter!($field_name, $field_name_type);
 
     };
     ($field_name:ident, $field_name_type:ty, $getter_documentation:literal, $setter_documentation:literal) =>
     {
 
-        trait_get_val!($field_name, $field_name_type, $getter_documentation);
+        trait_val_getter!($field_name, $field_name_type, $getter_documentation);
 
-        trait_set_val!($field_name, $field_name_type, $setter_documentation);
+        trait_val_setter!($field_name, $field_name_type, $setter_documentation);
 
     }
 
@@ -135,23 +135,23 @@ macro_rules! trait_mut_getter //trait_get_mut
 }
 
 #[macro_export]
-macro_rules! trait_mut_ref_getters //trait_get_ref_mut
+macro_rules! trait_ref_mut_getters //trait_get_ref_mut
 {
 
     ($field_name:ident, $field_name_type:ty) =>
     {
 
-        trait_get_ref!($field_name, $field_name_type);
+        trait_ref_getter!($field_name, $field_name_type);
 
-        trait_get_mut!($field_name, $field_name_type);
+        trait_mut_getter!($field_name, $field_name_type);
 
     };
     ($field_name:ident, $field_name_type:ty, $getter_documentation:literal, $setter_documentation:literal) =>
     {
 
-        trait_get_ref!($field_name, $field_name_type, $getter_documentation);
+        trait_ref_getter!($field_name, $field_name_type, $getter_documentation);
 
-        trait_get_mut!($field_name, $field_name_type, $setter_documentation);
+        trait_mut_getter!($field_name, $field_name_type, $setter_documentation);
 
     }
 

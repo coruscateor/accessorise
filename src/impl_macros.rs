@@ -431,17 +431,17 @@ macro_rules! impl_val_getter_setter //impl_get_set_val
     ($field_name:ident, $field_name_type:ty) =>
     {
 
-        impl_get_val!($field_name, $field_name_type);
+        impl_val_getter!($field_name, $field_name_type);
 
-        impl_set_val!($field_name, $field_name_type);
+        impl_val_setter!($field_name, $field_name_type);
 
     };
     ($field_name:ident, $field_name_type:ty, $getter_documentation:literal, $setter_documentation:literal) =>
     {
 
-        impl_get_val!($field_name, $field_name_type, $getter_documentation);
+        impl_val_getter!($field_name, $field_name_type, $getter_documentation);
 
-        impl_set_val!($field_name, $field_name_type, $setter_documentation:);
+        impl_val_setter!($field_name, $field_name_type, $setter_documentation:);
 
     }
 
@@ -454,17 +454,17 @@ macro_rules! impl_trait_val_getter_setter //impl_trait_get_set_val
     ($field_name:ident, $field_name_type:ty) =>
     {
 
-        impl_trait_get_val!($field_name, $field_name_type);
+        impl_trait_val_getter!($field_name, $field_name_type);
 
-        impl_trait_set_val!($field_name, $field_name_type);
+        impl_trait_val_setter!($field_name, $field_name_type);
 
     };
     ($field_name:ident, $field_name_type:ty, $getter_documentation:literal, $setter_documentation:literal) =>
     {
 
-        impl_trait_get_val!($field_name, $field_name_type, $getter_documentation);
+        impl_trait_val_getter!($field_name, $field_name_type, $getter_documentation);
 
-        impl_trait_set_val!($field_name, $field_name_type, $setter_documentation:);
+        impl_trait_val_setter!($field_name, $field_name_type, $setter_documentation:);
 
     }
 
@@ -477,17 +477,17 @@ macro_rules! impl_ref_mut_getters //impl_get_ref_mut
     ($field_name:ident, $field_name_type:ty) =>
     {
 
-        impl_get_ref!($field_name, $field_name_type);
+        impl_ref_getter!($field_name, $field_name_type);
 
-        impl_get_mut!($field_name, $field_name_type);
+        impl_mut_setter!($field_name, $field_name_type);
 
     };
     ($field_name:ident, $field_name_type:ty, $getter_documentation:literal, $setter_documentation:literal) =>
     {
 
-        impl_get_ref!($field_name, $field_name_type, $getter_documentation);
+        impl_ref_getter!($field_name, $field_name_type, $getter_documentation);
 
-        impl_get_mut!($field_name, $field_name_type, $setter_documentation:);
+        impl_mut_setter!($field_name, $field_name_type, $setter_documentation:);
 
     }
 
@@ -500,17 +500,17 @@ macro_rules! impl_trait_ref_mut_getters //impl_trait_get_ref_mut
     ($field_name:ident, $field_name_type:ty) =>
     {
 
-        impl_trait_get_ref!($field_name, $field_name_type);
+        impl_trait_ref_getter!($field_name, $field_name_type);
 
-        impl_trait_get_mut!($field_name, $field_name_type);
+        impl_trait_mut_setter!($field_name, $field_name_type);
 
     };
     ($field_name:ident, $field_name_type:ty, $getter_documentation:literal, $setter_documentation:literal) =>
     {
 
-        impl_trait_get_ref!($field_name, $field_name_type, $getter_documentation);
+        impl_trait_ref_getter!($field_name, $field_name_type, $getter_documentation);
 
-        impl_trait_get_mut!($field_name, $field_name_type, $setter_documentation:);
+        impl_trait_mut_setter!($field_name, $field_name_type, $setter_documentation:);
 
     }
 
