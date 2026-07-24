@@ -36,7 +36,48 @@ macro_rules! impl_val_setter //impl_set_val
 
         }
 
-    }
+    };
+    ($({$field_name:ident, $field_name_type:ty}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                pub fn [<set_ $field_name>](&mut self, value: $field_name_type)
+                {
+
+                    self.$field_name = value;
+
+                }
+
+            }
+
+        )+
+
+    };
+    ($({$field_name:ident, $field_name_type:ty, $documentation:literal}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                #[doc = $documentation]
+                pub fn [<set_ $field_name>](&mut self, value: $field_name_type)
+                {
+
+                    self.$field_name = value;
+
+                }
+
+            }
+
+        )+
+
+    };
 
 }
 
@@ -78,7 +119,48 @@ macro_rules! impl_trait_val_setter //impl_trait_set_val
 
         }
 
-    }
+    };
+    ($({$field_name:ident, $field_name_type:ty}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                fn [<set_ $field_name>](&mut self, value: $field_name_type)
+                {
+
+                    self.$field_name = value;
+
+                }
+
+            }
+
+        )+
+
+    };
+    ($({$field_name:ident, $field_name_type:ty, $documentation:literal}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                #[doc = $documentation]
+                fn [<set_ $field_name>](&mut self, value: $field_name_type)
+                {
+
+                    self.$field_name = value;
+
+                }
+
+            }
+
+        )+
+
+    };
 
 }
 
