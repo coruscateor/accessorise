@@ -11,4 +11,4 @@ keywords = ["accessor", "accessors", "getter", "setter", "macros"]
 [dependencies]
 
 [dev-dependencies]
-paste = "1.0.15"
+pastey = "0.2.3"
