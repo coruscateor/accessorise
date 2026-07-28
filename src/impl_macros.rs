@@ -536,7 +536,48 @@ macro_rules! impl_val_getter //impl_get_val
             
         }
 
-    }
+    };
+    ($({$field_name:ident, $field_name_type:ty}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                pub fn $field_name(&self) -> $field_name_type
+                {
+
+                    self.$field_name
+
+                }
+
+            }
+
+        )+
+
+    };
+    ($({$field_name:ident, $field_name_type:ty, $documentation:literal}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                #[doc = $documentation]
+                pub fn $field_name(&self) -> $field_name_type
+                {
+
+                    self.$field_name
+
+                }
+                
+            }
+
+        )+
+
+    };
 
 }
 
@@ -576,7 +617,48 @@ macro_rules! impl_val_clone_getter //impl_get_val
             
         }
 
-    }
+    };
+    ($({$field_name:ident, $field_name_type:ty}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                pub fn $field_name(&self) -> $field_name_type
+                {
+
+                    self.$field_name.clone()
+
+                }
+
+            }
+
+        )+
+
+    };
+    ($({$field_name:ident, $field_name_type:ty, $documentation:literal}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                #[doc = $documentation]
+                pub fn $field_name(&self) -> $field_name_type
+                {
+
+                    self.$field_name.clone()
+
+                }
+                
+            }
+
+        )+
+
+    };
 
 }
 
@@ -584,6 +666,87 @@ macro_rules! impl_val_clone_getter //impl_get_val
 
 #[macro_export]
 macro_rules! impl_trait_val_getter //impl_trait_get_val
+{
+
+    ($field_name:ident, $field_name_type:ty) =>
+    {
+
+        paste!
+        {
+
+            fn $field_name(&self) -> $field_name_type
+            {
+
+                self.$field_name
+
+            }
+
+        }
+
+    };
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
+    {
+
+        paste!
+        {
+
+            #[doc = $documentation]
+            fn $field_name(&self) -> $field_name_type
+            {
+
+                self.$field_name
+
+            }
+            
+        }
+
+    };
+    ($({$field_name:ident, $field_name_type:ty}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                fn $field_name(&self) -> $field_name_type
+                {
+
+                    self.$field_name
+
+                }
+
+            }
+
+        )+
+
+    };
+    ($({$field_name:ident, $field_name_type:ty, $documentation:literal}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                #[doc = $documentation]
+                fn $field_name(&self) -> $field_name_type
+                {
+
+                    self.$field_name
+
+                }
+                
+            }
+
+        )+
+
+    };
+
+}
+
+#[macro_export]
+macro_rules! impl_trait_val_clone_getter //impl_trait_get_val
 {
 
     ($field_name:ident, $field_name_type:ty) =>
@@ -618,7 +781,48 @@ macro_rules! impl_trait_val_getter //impl_trait_get_val
             
         }
 
-    }
+    };
+    ($({$field_name:ident, $field_name_type:ty}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                fn $field_name(&self) -> $field_name_type
+                {
+
+                    self.$field_name.clone()
+
+                }
+
+            }
+
+        )+
+
+    };
+    ($({$field_name:ident, $field_name_type:ty, $documentation:literal}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                #[doc = $documentation]
+                fn $field_name(&self) -> $field_name_type
+                {
+
+                    self.$field_name.clone()
+
+                }
+                
+            }
+
+        )+
+
+    };
 
 }
 
