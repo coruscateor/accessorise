@@ -204,7 +204,48 @@ macro_rules! impl_ref_getter //impl_get_ref
 
         }
 
-    }
+    };
+    ($({$field_name:ident, $field_name_type:ty}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                pub fn [<$field_name _ref>](&self) -> &$field_name_type
+                {
+
+                    &self.$field_name
+
+                }
+
+            }
+
+        )+
+
+    };
+    ($({$field_name:ident, $field_name_type:ty, $documentation:literal}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                #[doc = $documentation]
+                pub fn [<$field_name _ref>](&self) -> &$field_name_type
+                {
+
+                    &self.$field_name
+
+                }
+
+            }
+
+        )+
+
+    };
 
 }
 
@@ -246,7 +287,48 @@ macro_rules! impl_trait_ref_getter //impl_trait_get_ref
 
         }
 
-    }
+    };
+    ($({$field_name:ident, $field_name_type:ty}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                fn [<$field_name _ref>](&self) -> &$field_name_type
+                {
+
+                    &self.$field_name
+
+                }
+
+            }
+
+        )+
+
+    };
+    ($({$field_name:ident, $field_name_type:ty, $documentation:literal}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                #[doc = $documentation]
+                fn [<$field_name _ref>](&self) -> &$field_name_type
+                {
+
+                    &self.$field_name
+
+                }
+
+            }
+
+        )+
+
+    };
 
 }
 
@@ -288,7 +370,48 @@ macro_rules! impl_mut_getter //impl_get_mut
 
         }
 
-    }
+    };
+    ($({$field_name:ident, $field_name_type:ty}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                pub fn [<$field_name _mut>](&mut self) -> &mut $field_name_type
+                {
+
+                    &mut self.$field_name
+
+                }
+
+            }
+
+        )+
+
+    };
+    ($({$field_name:ident, $field_name_type:ty, $documentation:literal}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                #[doc = $documentation]
+                pub fn [<$field_name _mut>](&mut self) -> &mut $field_name_type
+                {
+
+                    &mut self.$field_name
+
+                }
+
+            }
+
+        )+
+
+    };
 
 }
 
@@ -332,14 +455,93 @@ macro_rules! impl_trait_mut_getter //impl_trait_get_mut
 
         }
 
+    };
+    ($({$field_name:ident, $field_name_type:ty}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                fn [<$field_name _mut>](&mut self) -> &mut $field_name_type
+                {
+
+                    &mut self.$field_name
+
+                }
+
+            }
+
+        )+
+
+    };
+    ($({$field_name:ident, $field_name_type:ty, $documentation:literal}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                #[doc = $documentation]
+                fn [<$field_name _mut>](&mut self) -> &mut $field_name_type
+                {
+
+                    &mut self.$field_name
+
+                }
+                
+            }
+
+        )+
+
+    };
+
+}
+
+#[macro_export]
+macro_rules! impl_val_getter //impl_get_val
+{
+
+    ($field_name:ident, $field_name_type:ty) =>
+    {
+
+        paste!
+        {
+
+            pub fn $field_name(&self) -> $field_name_type
+            {
+
+                self.$field_name
+
+            }
+
+        }
+
+    };
+    ($field_name:ident, $field_name_type:ty, $documentation:literal) =>
+    {
+
+        paste!
+        {
+
+            #[doc = $documentation]
+            pub fn $field_name(&self) -> $field_name_type
+            {
+
+                self.$field_name
+
+            }
+            
+        }
+
     }
 
 }
 
-//Cloning
-
 #[macro_export]
-macro_rules! impl_val_getter //impl_get_val
+macro_rules! impl_val_clone_getter //impl_get_val
 {
 
     ($field_name:ident, $field_name_type:ty) =>

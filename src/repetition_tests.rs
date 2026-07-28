@@ -40,7 +40,7 @@ impl TestStruct
 
     impl_mut_getter!(some_numbers, Vec<i32>, "Returns some numbers by mutable reference.");
 
-    impl_val_getter!(some_numbers, Vec<i32>);
+    impl_val_clone_getter!(some_numbers, Vec<i32>);
 
     //impl_val_setter!(some_numbers, Vec<i32>);
 
