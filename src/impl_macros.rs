@@ -829,7 +829,7 @@ macro_rules! impl_trait_val_clone_getter //impl_trait_get_val
 //Setter
 
 #[macro_export]
-macro_rules! impl_clone_val_setter //impl_set_val_clone
+macro_rules! impl_val_clone_setter //impl_set_val_clone
 {
 
     ($field_name:ident, $field_name_type:ty) =>
@@ -864,14 +864,55 @@ macro_rules! impl_clone_val_setter //impl_set_val_clone
 
         }
 
-    }
+    };
+    ($({$field_name:ident, $field_name_type:ty}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                pub fn [<set_ $field_name>](&mut self, value: &$field_name_type)
+                {
+
+                    self.$field_name = value.clone();
+
+                }
+
+            }
+
+        )+
+
+    };
+    ($({$field_name:ident, $field_name_type:ty, $documentation:literal}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                #[doc = $documentation]
+                pub fn [<set_ $field_name>](&mut self, value: &$field_name_type)
+                {
+
+                    self.$field_name = value.clone();
+
+                }
+                
+            }
+
+        )+
+
+    };
 
 }
 
 //Impl Trait
 
 #[macro_export]
-macro_rules! impl_trait_clone_val_setter //impl_trait_set_val_clone
+macro_rules! impl_trait_val_clone_setter //impl_trait_set_val_clone
 {
 
     ($field_name:ident, $field_name_type:ty) =>
@@ -906,7 +947,47 @@ macro_rules! impl_trait_clone_val_setter //impl_trait_set_val_clone
 
         }
 
-    }
+    };
+    ($({$field_name:ident, $field_name_type:ty}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                fn [<set_ $field_name>](&mut self, value: &$field_name_type)
+                {
+
+                    self.$field_name = value.clone();
+
+                }
+            }
+
+        )+
+
+    };
+    ($({$field_name:ident, $field_name_type:ty, $documentation:literal}),+) =>
+    {
+
+        $(
+
+            paste!
+            {
+
+                #[doc = $documentation]
+                fn [<set_ $field_name>](&mut self, value: &$field_name_type)
+                {
+
+                    self.$field_name = value.clone();
+
+                }
+
+            }
+
+        )+
+
+    };
 
 }
 
