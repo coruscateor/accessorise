@@ -23,28 +23,26 @@ Add accessors to your struct and trait implementations.
 
 use accessorise::*;
 
-//use super::*;
-
-use paste::paste;
+use pastey::paste;
 
 trait TestTrait
 {
 
-    trait_get_val!(a_number, i32);
+    trait_val_getter!(a_number, i32);
 
-    trait_set_val!(a_number, i32);
+    trait_val_setter!(a_number, i32);
 
-    trait_get_ref!(a_string, String);
+    trait_ref_getter!(a_string, String);
 
-    trait_get_mut!(a_string, String);
+    trait_mut_getter!(a_string, String);
 
-    trait_get_val!(a_number_doc, i8, "This is a getter declaration, presumably for a number field.");
+    trait_val_getter!(a_number_doc, i8, "This is a getter declaration, presumably for a number field.");
 
-    trait_set_val!(a_number_doc, i8, "This is a setter declaration, presumably for a number field.");
+    trait_val_setter!(a_number_doc, i8, "This is a setter declaration, presumably for a number field.");
 
-    trait_get_ref!(a_string_doc, String, "This is a getter declaration, presumably for a String field.");
+    trait_ref_getter!(a_string_doc, String, "This is a getter declaration, presumably for a String field.");
 
-    trait_get_mut!(a_string_doc, String, "This is a setter declaration, presumably for a String field.");
+    trait_mut_getter!(a_string_doc, String, "This is a setter declaration, presumably for a String field.");
 
 }
 
@@ -63,62 +61,187 @@ struct TestStruct
 impl TestStruct
 {
 
-    pub fn new() -> Self
-    {
+    impl_val_getter!(a_number, i32);
 
-        Self::default()
+    impl_val_setter!(a_number, i32);
 
-    }
+    impl_val_clone_getter!(a_string, String);
 
-    impl_get_val!(a_number, i32);
+    impl_val_clone_getter!(a_string_doc, String, "Returns a cloned String.");
 
-    impl_set_val!(a_number, i32);
+    impl_ref_getter!(some_numbers, Vec<i32>, "Returns some numbers by reference.");
 
-    impl_get_val!(a_string, String);
+    impl_mut_getter!(some_numbers, Vec<i32>, "Returns some numbers by mutable reference.");
 
-    impl_get_val!(a_string_doc, String, "Returns a cloned String.");
+    impl_val_clone_getter!(some_numbers, Vec<i32>);
 
-    impl_get_ref!(some_numbers, Vec<i32>, "Returns some numbers by reference.");
-
-    impl_get_mut!(some_numbers, Vec<i32>, "Returns some numbers by mutable reference.");
-
-    impl_get_val!(some_numbers, Vec<i32>);
-
-    impl_set_val!(some_numbers, Vec<i32>);
+    impl_val_setter!(some_numbers, Vec<i32>);
 
 }
 
 impl TestTrait for TestStruct
 {
 
-    impl_trait_get_val!(a_number, i32);
+    impl_trait_val_getter!(a_number, i32);
 
-    impl_trait_set_val!(a_number, i32);
+    impl_trait_val_setter!(a_number, i32);
 
-    impl_trait_get_ref!(a_string, String);
+    impl_trait_ref_getter!(a_string, String);
 
-    impl_trait_get_mut!(a_string, String);
+    impl_trait_mut_getter!(a_string, String);
 
-    impl_trait_get_val!(a_number_doc, i8, "This is a getter implementation for a number field.");
+    impl_trait_val_getter!(a_number_doc, i8, "This is a getter implementation for a number field.");
 
-    impl_trait_set_val!(a_number_doc, i8, "This is a setter implementation for a number field.");
+    impl_trait_val_setter!(a_number_doc, i8, "This is a setter implementation for a number field.");
 
-    impl_trait_get_ref!(a_string_doc, String, "This is a getter implementation for a String field.");
+    impl_trait_ref_getter!(a_string_doc, String, "This is a getter implementation for a String field.");
 
-    impl_trait_get_mut!(a_string_doc, String, "This is a setter implementation for a String field.");
+    impl_trait_mut_getter!(a_string_doc, String, "This is a setter implementation for a String field.");
     
 }
 
 fn main()
 {
     
-    let mut test_struct = TestStruct::new();
+    let mut test_struct = TestStruct::default();
 
     let _number = test_struct.a_number();
 
     test_struct.set_a_number(5);
 
 }
+
+```
+
+### Repetitions
+
+```rust
+
+use accessorise::*;
+
+use pastey::paste;
+
+#[derive(Default)]
+struct RepetitionsStruct
+{
+
+    field_one: u32,
+    field_two: u64,
+    field_three: String,
+    field_four: String,
+    field_one_doc: i8,
+    field_two_doc: i16,
+    field_three_doc: Vec<i32>,
+    field_four_doc: Vec<i128>,
+
+}
+
+impl RepetitionsStruct
+{
+
+    //Getters
+
+    impl_trait_val_getter!({ field_one, u32 }, { field_two, u64 });
+
+    impl_trait_val_clone_getter!({ field_three, String }, { field_four, String });
+
+    impl_trait_val_getter!({ field_one_doc, i8, "Returns an i8 number" }, { field_two_doc, i16, "Returns a u16 number" });
+
+    impl_trait_val_clone_getter!({ field_three_doc, Vec<i32>, "Returns some numbers" }, { field_four_doc, Vec<i128>, "Returns some numbers" });
+
+    //Setters
+
+    impl_trait_val_setter!({ field_one, u32 }, { field_two, u64 });
+
+    impl_trait_val_clone_setter!({ field_three, String }, { field_four, String });
+
+    impl_trait_val_setter!({ field_one_doc, i8, "Sets an i8 number" }, { field_two_doc, i16, "Sets a u16 number" });
+
+    impl_trait_val_setter!({ field_three_doc, Vec<i32>, "Sets some numbers" }, { field_four_doc, Vec<i128>, "Sets some numbers" });
+
+}
+
+fn main()
+{
+    
+    let mut repetitions_struct = RepetitionsStruct::default();
+
+    let _number = repetitions_struct.field_one();
+
+    repetitions_struct.set_field_one(5);
+
+}
+
+/*
+trait RepetitionsTrait
+{
+
+    impl_val_getter_setter!({ a_number, u32 }, { a_number_2, u64 });
+
+    impl_val_clone_getter!({ a_string, String }, { a_string_2, String });
+
+    impl_val_clone_getter!({ a_string_doc, String, "Returns a cloned String." },  { a_string_doc_2, String, "Returns a cloned String.");
+
+    impl_ref_getter!({ some_numbers, Vec<i32>, "Returns some numbers by reference." }, { some_numbers_2, Vec<i128>, "Returns some more numbers by reference." });
+
+    impl_mut_getter!({ some_numbers, Vec<i32>, "Returns some numbers by mutable reference."}, { some_numbers_2, Vec<i32>, "Returns some more numbers by mutable reference."} );
+
+    impl_val_clone_getter!({ some_numbers, Vec<i32> });
+
+    impl_val_setter!(some_numbers, Vec<i32>);
+
+
+}
+
+#[derive(Default)]
+struct RepetitionsStruct
+{
+
+    a_number: u32,
+    a_number_2: u64,
+    a_string: String,
+    a_string_2: String,
+    a_number_doc: i8,
+    a_number_doc_2: i16,
+    a_string_doc: String,
+    a_string_doc_2: String,
+    some_numbers: Vec<i32>,
+    some_numbers_2: Vec<i128>
+
+}
+
+impl RepetitionsTrait for RepetitionsStruct
+{
+
+    impl_trait_val_getter!(a_number, i32);
+
+    impl_trait_val_setter!(a_number, i32);
+
+    impl_trait_ref_getter!(a_string, String);
+
+    impl_trait_mut_getter!(a_string, String);
+
+    impl_trait_val_getter!(a_number_doc, i8, "This is a getter implementation for a number field.");
+
+    impl_trait_val_setter!(a_number_doc, i8, "This is a setter implementation for a number field.");
+
+    impl_trait_ref_getter!(a_string_doc, String, "This is a getter implementation for a String field.");
+
+    impl_trait_mut_getter!(a_string_doc, String, "This is a setter implementation for a String field.");
+    
+}
+
+fn main()
+{
+    
+    let mut test_struct = RepetitionsStruct::default();
+
+    let _number = test_struct.a_number();
+
+    test_struct.set_a_number(5);
+
+}
+*/
 
 ```
 

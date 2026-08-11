@@ -1010,9 +1010,33 @@ macro_rules! impl_val_getter_setter //impl_get_set_val
 
         impl_val_getter!($field_name, $field_name_type, $getter_documentation);
 
-        impl_val_setter!($field_name, $field_name_type, $setter_documentation:);
+        impl_val_setter!($field_name, $field_name_type, $setter_documentation);
 
-    }
+    };
+    ($({$field_name:ident, $field_name_type:ty}),+) =>
+    {
+
+        $(
+
+            impl_val_getter!($field_name, $field_name_type);
+
+            impl_val_setter!($field_name, $field_name_type);
+
+        )+
+
+    };
+    ($({$field_name:ident, $field_name_type:ty, $documentation:literal}),+) =>
+    {
+
+        $(
+
+            impl_val_getter!($field_name, $field_name_type, $getter_documentation);
+
+            impl_val_setter!($field_name, $field_name_type, $setter_documentation);
+
+        )+
+
+    };
 
 }
 
@@ -1033,9 +1057,33 @@ macro_rules! impl_trait_val_getter_setter //impl_trait_get_set_val
 
         impl_trait_val_getter!($field_name, $field_name_type, $getter_documentation);
 
-        impl_trait_val_setter!($field_name, $field_name_type, $setter_documentation:);
+        impl_trait_val_setter!($field_name, $field_name_type, $setter_documentation);
 
-    }
+    };
+    ($({$field_name:ident, $field_name_type:ty}),+) =>
+    {
+
+        $(
+
+            impl_trait_val_getter!($field_name, $field_name_type);
+
+            impl_trait_val_setter!($field_name, $field_name_type);
+
+        )+
+
+    };
+    ($({$field_name:ident, $field_name_type:ty, $documentation:literal}),+) =>
+    {
+
+        $(
+
+            impl_trait_val_getter!($field_name, $field_name_type, $getter_documentation);
+
+            impl_trait_val_setter!($field_name, $field_name_type, $setter_documentation);
+
+        )+
+
+    };
 
 }
 
@@ -1056,9 +1104,33 @@ macro_rules! impl_ref_mut_getters //impl_get_ref_mut
 
         impl_ref_getter!($field_name, $field_name_type, $getter_documentation);
 
-        impl_mut_getter!($field_name, $field_name_type, $setter_documentation:);
+        impl_mut_getter!($field_name, $field_name_type, $setter_documentation);
 
-    }
+    };
+    ($({$field_name:ident, $field_name_type:ty}),+) =>
+    {
+
+        $(
+
+            impl_ref_getter!($field_name, $field_name_type);
+
+            impl_mut_getter!($field_name, $field_name_type);
+
+        )+
+
+    };
+    ($({$field_name:ident, $field_name_type:ty, $documentation:literal}),+) =>
+    {
+
+        $(
+
+            impl_ref_getter!($field_name, $field_name_type, $getter_documentation);
+
+            impl_mut_getter!($field_name, $field_name_type, $setter_documentation);
+
+        )+
+
+    };
 
 }
 
@@ -1079,9 +1151,33 @@ macro_rules! impl_trait_ref_mut_getters //impl_trait_get_ref_mut
 
         impl_trait_ref_getter!($field_name, $field_name_type, $getter_documentation);
 
-        impl_trait_mut_getter!($field_name, $field_name_type, $setter_documentation:);
+        impl_trait_mut_getter!($field_name, $field_name_type, $setter_documentation);
 
-    }
+    };
+    ($({$field_name:ident, $field_name_type:ty}),+) =>
+    {
+
+        $(
+
+            impl_trait_ref_getter!($field_name, $field_name_type);
+
+            impl_trait_mut_getter!($field_name, $field_name_type);
+
+        )+
+
+    };
+    ($({$field_name:ident, $field_name_type:ty, $documentation:literal}),+) =>
+    {
+
+        $(
+
+            impl_trait_ref_getter!($field_name, $field_name_type, $getter_documentation);
+
+            impl_trait_mut_getter!($field_name, $field_name_type, $setter_documentation);
+
+        )+
+
+    };
 
 }
 
