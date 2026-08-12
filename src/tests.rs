@@ -38,13 +38,6 @@ struct TestStruct
 impl TestStruct
 {
 
-    pub fn new() -> Self
-    {
-
-        Self::default()
-
-    }
-
     impl_ref_getter!(a_number, i32);
 
     impl_val_setter!(a_number, i32);
@@ -87,10 +80,8 @@ impl TestTrait for TestStruct
 #[test]
 fn it_works()
 {
-
-    //use super::tests::TestStruct;
     
-    let mut test_struct = TestStruct::new();
+    let mut test_struct = TestStruct::default();
 
     let _number = test_struct.a_number();
 

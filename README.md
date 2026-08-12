@@ -17,6 +17,8 @@
 
 Add accessors to your struct and trait implementations.
 
+<br/>
+
 </div>
 
 ```rust
@@ -113,6 +115,8 @@ fn main()
 
 ```
 
+<br/>
+
 ### Repetitions
 
 ```rust
@@ -155,7 +159,7 @@ impl RepetitionsStruct
 
     impl_trait_val_clone_setter!({ field_three, String }, { field_four, String });
 
-    impl_trait_val_setter!({ field_one_doc, i8, "Sets an i8 number" }, { field_two_doc, i16, "Sets a u16 number" });
+    impl_trait_val_setter!({ field_one_doc, i8, "Sets a i8 number" }, { field_two_doc, i16, "Sets a u16 number" });
 
     impl_trait_val_setter!({ field_three_doc, Vec<i32>, "Sets some numbers" }, { field_four_doc, Vec<i128>, "Sets some numbers" });
 
@@ -172,77 +176,6 @@ fn main()
 
 }
 
-/*
-trait RepetitionsTrait
-{
-
-    impl_val_getter_setter!({ a_number, u32 }, { a_number_2, u64 });
-
-    impl_val_clone_getter!({ a_string, String }, { a_string_2, String });
-
-    impl_val_clone_getter!({ a_string_doc, String, "Returns a cloned String." },  { a_string_doc_2, String, "Returns a cloned String.");
-
-    impl_ref_getter!({ some_numbers, Vec<i32>, "Returns some numbers by reference." }, { some_numbers_2, Vec<i128>, "Returns some more numbers by reference." });
-
-    impl_mut_getter!({ some_numbers, Vec<i32>, "Returns some numbers by mutable reference."}, { some_numbers_2, Vec<i32>, "Returns some more numbers by mutable reference."} );
-
-    impl_val_clone_getter!({ some_numbers, Vec<i32> });
-
-    impl_val_setter!(some_numbers, Vec<i32>);
-
-
-}
-
-#[derive(Default)]
-struct RepetitionsStruct
-{
-
-    a_number: u32,
-    a_number_2: u64,
-    a_string: String,
-    a_string_2: String,
-    a_number_doc: i8,
-    a_number_doc_2: i16,
-    a_string_doc: String,
-    a_string_doc_2: String,
-    some_numbers: Vec<i32>,
-    some_numbers_2: Vec<i128>
-
-}
-
-impl RepetitionsTrait for RepetitionsStruct
-{
-
-    impl_trait_val_getter!(a_number, i32);
-
-    impl_trait_val_setter!(a_number, i32);
-
-    impl_trait_ref_getter!(a_string, String);
-
-    impl_trait_mut_getter!(a_string, String);
-
-    impl_trait_val_getter!(a_number_doc, i8, "This is a getter implementation for a number field.");
-
-    impl_trait_val_setter!(a_number_doc, i8, "This is a setter implementation for a number field.");
-
-    impl_trait_ref_getter!(a_string_doc, String, "This is a getter implementation for a String field.");
-
-    impl_trait_mut_getter!(a_string_doc, String, "This is a setter implementation for a String field.");
-    
-}
-
-fn main()
-{
-    
-    let mut test_struct = RepetitionsStruct::default();
-
-    let _number = test_struct.a_number();
-
-    test_struct.set_a_number(5);
-
-}
-*/
-
 ```
 
 <br/>
@@ -255,9 +188,13 @@ Build with the latest stable compiler.
 
 ## Todo:
 
-- Add more documentation
-- Add more macros
-- Add rules for things like aliases and multiple accessor declarations and definitions to the macros that are already part of this crate.
+- Add more documentation.
+- Add more macros.
+
+## Maybe:
+
+- Add macros to generate aliased accessors.
+- Add macros and rules which allow specification of different accessibility levels.
 
 <br/>
 
