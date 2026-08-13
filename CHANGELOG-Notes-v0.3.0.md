@@ -1,4 +1,4 @@
-commit e2e8ae98fdf686cabedd4f69a2b54b3c14a45c87
+commit e2e8ae98fdf686cabedd4f69a2b54b3c14a45c87 -
 Author: Paul Saunders <coruscateor@users.noreply.github.com>
 Date:   Tue Aug 11 20:00:35 2026 +1200
 
@@ -22,7 +22,7 @@ Date:   Tue Aug 11 20:00:35 2026 +1200
     
     - Added repetition rules to the trait_val_clone_setter macro.
 
-commit 0fa3ae08550fdcb6ef347f6fad82c774a89a96d8
+commit 0fa3ae08550fdcb6ef347f6fad82c774a89a96d8 -
 Author: Paul Saunders <coruscateor@users.noreply.github.com>
 Date:   Wed Jul 29 19:50:50 2026 +1200
 
@@ -40,7 +40,7 @@ Date:   Wed Jul 29 19:50:50 2026 +1200
     
     - Renamed the trait_clone_sig_val_setter macro to trait_val_clone_setter.
 
-commit 5b2e176a2505e7fbdeabb18ac0cc5018a34b1f7d
+commit 5b2e176a2505e7fbdeabb18ac0cc5018a34b1f7d -
 Author: Paul Saunders <coruscateor@users.noreply.github.com>
 Date:   Tue Jul 28 15:34:22 2026 +1200
 
@@ -54,7 +54,7 @@ Date:   Tue Jul 28 15:34:22 2026 +1200
     
     - Added repetition rules to the impl_trait_val_clone_getter macro.
 
-commit a208c10c9383f086d57efabbf4e29bf240c6e2ee
+commit a208c10c9383f086d57efabbf4e29bf240c6e2ee -
 Author: Paul Saunders <coruscateor@users.noreply.github.com>
 Date:   Tue Jul 28 14:35:00 2026 +1200
 
@@ -70,13 +70,13 @@ Date:   Tue Jul 28 14:35:00 2026 +1200
     
     - Renamed the original impl_val_getter macro to impl_val_clone_getter and updated the project accordingly.
 
-commit 9bbac61a3addb8bc1926207c47bd0840e9ac0c6d
+commit 9bbac61a3addb8bc1926207c47bd0840e9ac0c6d -
 Author: Paul Saunders <coruscateor@users.noreply.github.com>
 Date:   Fri Jul 24 19:09:45 2026 +1200
 
     Fixed some macro invocations.
 
-commit c29fd4799bbad92d265f965a1e228f5c2229007d
+commit c29fd4799bbad92d265f965a1e228f5c2229007d --
 Merge: be8551c 3f7d465
 Author: Paul Saunders <coruscateor@users.noreply.github.com>
 Date:   Fri Jul 24 17:01:01 2026 +1200
