@@ -83,7 +83,7 @@ Date:   Fri Jul 24 17:01:01 2026 +1200
 
     Merge branch 'v0_3_0' of https://github.com/coruscateor/accessorise into v0_3_0
 
-commit be8551c379eea8fdc0029460eabe828b35ce4c3e
+commit be8551c379eea8fdc0029460eabe828b35ce4c3e -
 Author: Paul Saunders <coruscateor@users.noreply.github.com>
 Date:   Fri Jul 24 16:23:14 2026 +1200
 
@@ -107,7 +107,7 @@ Date:   Fri Jul 24 16:23:14 2026 +1200
     
     - Added the repetition_tests test module.
 
-commit 3f7d465fa9872b759df693d789ba83d0b681269f
+commit 3f7d465fa9872b759df693d789ba83d0b681269f --
 Author: Paul Saunders <coruscateor@users.noreply.github.com>
 Date:   Fri Jul 24 16:23:14 2026 +1200
 
@@ -127,7 +127,7 @@ Date:   Fri Jul 24 16:23:14 2026 +1200
     
     - Added the repetition_tests test module.
 
-commit 66f4b096dbf39918cc8c85b03a070e917f1a60b8
+commit 66f4b096dbf39918cc8c85b03a070e917f1a60b8 -
 Author: Paul Saunders <coruscateor@users.noreply.github.com>
 Date:   Thu Jul 23 14:37:38 2026 +1200
 
@@ -145,7 +145,7 @@ Date:   Thu Jul 23 14:37:38 2026 +1200
     
     - Renamed the trait_mut_ref_getters macro to trait_ref_mut_getters.
 
-commit b86fd3a613727395cea64bf7ad491b899d9d024a
+commit b86fd3a613727395cea64bf7ad491b899d9d024a -
 Author: Paul Saunders <coruscateor@users.noreply.github.com>
 Date:   Wed Jul 22 20:48:27 2026 +1200
 

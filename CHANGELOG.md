@@ -69,6 +69,22 @@ commit a208c10c9383f086d57efabbf4e29bf240c6e2ee
 
 - Added a new impl_val_getter macro.
 
+commit be8551c379eea8fdc0029460eabe828b35ce4c3e
+
+- Added the pastey dev-dependency and updated the project accordingly.
+
+- Added a rule to the impl_val_setter macro which takes an ident parameter and a ty parameter in curly braces, requiring one or more repetitions in this format, outputting setter method definitions.
+
+- Added a rule to the impl_val_setter macro which takes an ident parameter, a ty parameter and a literal parameter in curly braces, requiring one or more repetitions in this format, outputting documented setter method definitions.
+
+- Added a rule to the impl_trait_val_setter macro which takes an ident parameter and a ty parameter in curly braces, requiring one or more repetitions in this format, outputting setter method definitions.
+
+- Added a rule to the impl_trait_val_setter macro which takes an ident parameter, a ty parameter and a literal parameter in curly braces, requiring one or more repetitions in this format, outputting documented setter method definitions.
+
+- Added the tests test module.
+
+- Added the repetition_tests test module.
+
 
 
 ### Changed
@@ -107,6 +123,80 @@ commit 9bbac61a3addb8bc1926207c47bd0840e9ac0c6d
 
 -- Fixed some macro invocations.
 
+commit be8551c379eea8fdc0029460eabe828b35ce4c3e
+
+- Moved the contents of the tests lib-module into the newly added tests module.
+
+commit 66f4b096dbf39918cc8c85b03a070e917f1a60b8
+
+- Updated the macro invocations in the impl_val_getter_setter macro.
+
+- Updated the macro invocations in the impl_trait_val_getter_setter macro.
+
+- Updated the macro invocations in the impl_ref_mut_getters macro.
+
+- Updated the macro invocations in the impl_trait_ref_mut_getters macro.
+
+- Updated the tests module to use the new macro names.
+
+- Updated the macro invocations in the trait_val_getter_setter macro.
+
+-- Renamed the trait_mut_ref_getters macro to trait_ref_mut_getters.
+
+- Renamed the trait_get_ref_mut macro to trait_ref_mut_getters.
+
+Renamed
+
+commit b86fd3a613727395cea64bf7ad491b899d9d024a
+
+- Renamed the impl_set_val macro to impl_val_setter.
+
+- Renamed the impl_trait_set_val macro to impl_trait_val_setter.
+
+- Renamed the impl_get_ref macro to impl_ref_getter.
+
+- Renamed the impl_trait_get_ref macro to impl_trait_ref_getter.
+
+- Renamed the impl_get_mut macro to impl_mut_getter.
+
+- Renamed the impl_trait_get_mut macro to impl_trait_mut_getter.
+
+- Renamed the impl_get_val macro to impl_val_getter.
+
+- Renamed the impl_trait_get_val macro to impl_trait_val_getter.
+
+-- Renamed the impl_set_val_clone macro to impl_clone_val_setter.
+
+Renamed
+
+-- Renamed the impl_trait_set_val_clone macro to impl_trait_clone_val_setter.
+
+Renamed
+
+- Renamed the impl_trait_get_set_val macro to impl_trait_val_getter_setter.
+
+- Renamed the impl_get_ref_mut macro to impl_ref_mut_getters.
+
+- Renamed the impl_trait_get_ref_mut macro to impl_trait_ref_mut_getters.
+
+- Renamed the trait_get_val macro to trait_val_getter.
+
+- Renamed the trait_set_val macro to trait_val_setter.
+
+- Renamed the trait_get_set_val macro to trait_val_getter_setter.
+
+- Renamed the trait_get_ref macro to trait_ref_getter.
+
+- Renamed the trait_get_mut macro to trait_mut_getter.
+
+-- Renamed the trait_get_ref_mut macro to trait_mut_ref_getters.
+
+Renamed
+
+-- Renamed the trait_set_val_clone_sig macro to trait_clone_sig_val_setter.
+
+Renamed
+
 
 
 ### Deprecated
@@ -114,6 +204,14 @@ commit 9bbac61a3addb8bc1926207c47bd0840e9ac0c6d
 
 
 ### Removed
+
+commit be8551c379eea8fdc0029460eabe828b35ce4c3e
+
+- Removed the paste dev-dependency.
+
+commit be8551c379eea8fdc0029460eabe828b35ce4c3e
+
+- Removed the tests lib-module.
 
 
 
