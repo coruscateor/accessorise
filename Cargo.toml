@@ -7,6 +7,7 @@ description = "Add accessors to your struct and trait implementations."
 repository = "https://github.com/coruscateor/accessorise"
 homepage = "https://coruscateor.com/projects/accessorise"
 keywords = ["accessor", "accessors", "getter", "setter", "macros"]
+authors = ["Paul Saunders"]
 
 [dependencies]
 
